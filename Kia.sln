@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32319.34
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kia.ConsoleApp", "Kia.ConsoleApp\Kia.ConsoleApp.csproj", "{D8467D8C-2489-441F-B5E9-FD0D96E8A5B1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kia.CodeAnalysis", "Kia.CodeAnalysis\Kia.CodeAnalysis.csproj", "{D6C1B402-6E99-4AE2-B84E-58B64A1B0AC9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D8467D8C-2489-441F-B5E9-FD0D96E8A5B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8467D8C-2489-441F-B5E9-FD0D96E8A5B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8467D8C-2489-441F-B5E9-FD0D96E8A5B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8467D8C-2489-441F-B5E9-FD0D96E8A5B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6C1B402-6E99-4AE2-B84E-58B64A1B0AC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6C1B402-6E99-4AE2-B84E-58B64A1B0AC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6C1B402-6E99-4AE2-B84E-58B64A1B0AC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6C1B402-6E99-4AE2-B84E-58B64A1B0AC9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7BF52528-27AE-497B-8BA4-AD2AFDDB911B}
+	EndGlobalSection
+EndGlobal
