@@ -2,7 +2,7 @@
 
 internal class NumberExpression : ExpressionSyntax
 {
-    public override TokenType Type => TokenType.NumberToken;
+    public override TokenType Type => TokenType.NumberExpression;
 
     public NumberExpression(SyntaxToken token)
     {
