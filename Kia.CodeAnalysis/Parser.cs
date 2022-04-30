@@ -5,14 +5,17 @@ public class Parser
 {
     private readonly SyntaxToken[] _tokens;
     private int _position = 0;
-    public Parser(string text)
+    public Parser(string text) : this(new Lexer(text))
     {
-        var lex = new Lexer(text);
+    }
+
+    public Parser(Lexer lexer)
+    {
         var tokens = new List<SyntaxToken>();
         SyntaxToken token;
         do
         {
-            token = lex.NextSyntaxToken();
+            token = lexer.NextSyntaxToken();
             tokens.Add(token);
         } while (token.Type != TokenType.EndOfFileToken);
         _tokens = tokens.ToArray();
