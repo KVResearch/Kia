@@ -23,20 +23,23 @@ public class SyntaxTree
         Console.Write(indent);
         Console.Write(marker);
 
+        ConsoleColor colour = ConsoleColor.White;
 
-        var colour = node.Type switch
-        {
-            TokenType.NumberToken => ConsoleColor.DarkGreen,
-            TokenType.MinusToken or
-            TokenType.PlusToken or
-            TokenType.StarToken or
-            TokenType.SlashToken => ConsoleColor.DarkCyan,
-            TokenType.BadToken => ConsoleColor.Red,
-            _ => node.Type.ToString().EndsWith("Expression")
-                ? ConsoleColor.DarkYellow
-                : ConsoleColor.White,
-        };
+        var type = node.Type.ToString();
+        if (type.EndsWith("Token"))
+            colour = ConsoleColor.DarkCyan;
+
+        if (node.Type == TokenType.NumberToken)
+            colour = ConsoleColor.DarkGreen;
+
+        if (node.Type == TokenType.BadToken)
+            colour = ConsoleColor.DarkRed;
+
+        if (type.EndsWith("Expression"))
+            colour = ConsoleColor.DarkYellow;
+
         PrintColourly(node.Type, colour);
+
         if (node is SyntaxToken t)
         {
             Console.Write(" ");
