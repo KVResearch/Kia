@@ -23,7 +23,7 @@ while (true)
     Console.WriteLine("######## PARSER #########");
     var parser = new Parser(s);
     var e = parser.Parse();
-    PrettyPrint(e);
+    PrettyPrint(e.Root);
 
 }
 

@@ -40,13 +40,14 @@ public class Parser
     {
         if (Current.Type == type)
             return NextToken();
-
         return new SyntaxToken(type, Current.Position, null, null);
     }
 
-    public ExpressionSyntax Parse()
+    public SyntaxTree Parse()
     {
-        return ParseTerm();
+        var exp = ParseTerm();
+        var eof = ExpectToken(TokenType.EndOfFileToken);
+        return new(exp, eof);
     }
 
     // Parse () first!
@@ -83,7 +84,7 @@ public class Parser
     {
         var left = ParseFactor();
 
-        while (Current.Type is TokenType.PlusToken 
+        while (Current.Type is TokenType.PlusToken
                             or TokenType.MinusToken)
         {
             var oper = NextToken();
