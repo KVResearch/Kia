@@ -5,12 +5,14 @@ public class Parser
 {
     private readonly SyntaxToken[] _tokens;
     private int _position = 0;
-    public Parser(string text) : this(new Lexer(text))
+    public Parser(string text) : this(new Lexer(text), false)
     {
     }
 
-    public Parser(Lexer lexer)
+    public Parser(Lexer lexer, bool resetLexer = true)
     {
+        if (resetLexer)
+            lexer.ResetPosition();
         var tokens = new List<SyntaxToken>();
         SyntaxToken token;
         do

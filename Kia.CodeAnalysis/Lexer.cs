@@ -12,6 +12,11 @@ public class Lexer
         _position = 0;
     }
 
+    public void ResetPosition()
+    {
+        _position = 0;
+    }
+
     public char CurrentChar
         => _position >= _text.Length
             ? '\0'
