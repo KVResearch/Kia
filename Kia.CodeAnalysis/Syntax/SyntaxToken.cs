@@ -1,6 +1,6 @@
-﻿namespace Kia.CodeAnalysis;
+﻿namespace Kia.CodeAnalysis.Syntax;
 
-public class SyntaxToken
+public class SyntaxToken : SyntaxNode
 {
     public SyntaxToken(TokenType type, int position, string text, object? value = null)
     {
@@ -9,8 +9,14 @@ public class SyntaxToken
         Text = text;
     }
 
-    public TokenType Type { get; }
+    public override TokenType Type { get; }
+
     public int Position { get; }
     public string Text { get; }
     public object? Value { get; }
+
+    public override IEnumerable<SyntaxNode> GetChildren()
+    {
+        return Enumerable.Empty<SyntaxNode>();
+    }
 }

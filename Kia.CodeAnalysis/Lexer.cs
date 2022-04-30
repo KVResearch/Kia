@@ -1,4 +1,6 @@
-﻿namespace Kia.CodeAnalysis;
+﻿using Kia.CodeAnalysis.Syntax;
+
+namespace Kia.CodeAnalysis;
 
 public class Lexer
 {

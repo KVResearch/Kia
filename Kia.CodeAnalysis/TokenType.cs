@@ -12,4 +12,7 @@ public enum TokenType
     CloseParenthesisToken, // )
     BadToken,
     EndOfFileToken,        // '\0'
+    NumberExpression,
+    BinaryExpression,
+    ParenthesisedExpression
 }
