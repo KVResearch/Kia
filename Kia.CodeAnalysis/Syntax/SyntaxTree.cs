@@ -32,7 +32,9 @@ public class SyntaxTree
             TokenType.StarToken or
             TokenType.SlashToken => ConsoleColor.DarkCyan,
             TokenType.BadToken => ConsoleColor.Red,
-            _ => ConsoleColor.White,
+            _ => node.Type.ToString().EndsWith("Expression")
+                ? ConsoleColor.DarkYellow
+                : ConsoleColor.White,
         };
         PrintColourly(node.Type, colour);
         if (node is SyntaxToken t)
