@@ -13,7 +13,7 @@ public class SyntaxTree
     public static SyntaxTree Parse(string text)
     {
         var parser = new Parser(text);
-        return null;
+        return parser.Parse();
     }
 
     public static void Print(SyntaxNode node, string indent = "", bool isLast = true)
