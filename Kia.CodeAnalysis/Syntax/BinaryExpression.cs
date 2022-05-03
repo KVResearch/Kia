@@ -7,10 +7,10 @@ internal class BinaryExpression : ExpressionSyntax
     public SyntaxToken Operator { get; }
     public ExpressionSyntax Right { get; }
 
-    public BinaryExpression(ExpressionSyntax left, SyntaxToken operatorToken, ExpressionSyntax right)
+    public BinaryExpression(ExpressionSyntax left, SyntaxToken oper, ExpressionSyntax right)
     {
         Left = left;
-        Operator = operatorToken;
+        Operator = oper;
         Right = right;
     }
 

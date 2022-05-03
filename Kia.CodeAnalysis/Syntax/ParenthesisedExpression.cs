@@ -4,11 +4,11 @@ internal class ParenthesisedExpression : ExpressionSyntax
 {
     public override TokenType Type => TokenType.ParenthesisedExpression;
 
-    public ParenthesisedExpression(SyntaxToken openParenthesisToken, ExpressionSyntax expression, SyntaxToken closeParenthesisToken)
+    public ParenthesisedExpression(SyntaxToken openParenthesis, ExpressionSyntax expression, SyntaxToken closeParenthesis)
     {
-        OpenParenthesisToken = openParenthesisToken;
+        OpenParenthesisToken = openParenthesis;
         Expression = expression;
-        CloseParenthesisToken = closeParenthesisToken;
+        CloseParenthesisToken = closeParenthesis;
     }
     public SyntaxToken OpenParenthesisToken { get; }
     
