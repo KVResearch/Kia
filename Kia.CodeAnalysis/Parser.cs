@@ -50,11 +50,28 @@ public class Parser
 
     public SyntaxTree Parse()
     {
-        var exp = ParseTerm();
+        var exp = ParseExpression();
         var eof = ExpectToken(TokenType.EndOfFileToken);
         return new(exp, eof);
     }
 
+    private ExpressionSyntax ParseExpression(int parentPrecedence = 0)
+    {
+        var left = ParsePrimaryExpression();
+
+        while (true)
+        {
+            var precedence = Current.Type.GetBinaryExpressionPrecedence();
+            if (precedence == 0 || precedence <= parentPrecedence)
+                break;
+
+            var oper = NextToken();
+            var right = ParseExpression(precedence);
+            left = new BinaryExpression(left, oper, right);
+        }
+        return left;
+        
+    }
     // Parse () first!
     private ExpressionSyntax ParsePrimaryExpression()
     {
@@ -69,40 +86,4 @@ public class Parser
         var numberToken = ExpectToken(TokenType.NumberToken);
         return new NumberExpression(numberToken);
     }
-
-    // Parse * and /
-    private ExpressionSyntax ParseFactor()
-    {
-        var left = ParsePrimaryExpression();
-        while (Current.Type is TokenType.StarToken
-                            or TokenType.SlashToken)
-        {
-            var oper = NextToken();
-            var right = ParsePrimaryExpression();
-            left = new BinaryExpression(left, oper, right);
-        }
-        return left;
-    }
-
-    // Then Parse +, -
-    private ExpressionSyntax ParseTerm()
-    {
-        var left = ParseFactor();
-
-        while (Current.Type is TokenType.PlusToken
-                            or TokenType.MinusToken)
-        {
-            var oper = NextToken();
-            var right = ParseFactor();
-            left = new BinaryExpression(left, oper, right);
-        }
-
-        return left;
-    }
-
-    private ExpressionSyntax ParseExpression()
-    {
-        return ParseTerm();
-    }
 }
-
