@@ -8,7 +8,7 @@ while (true)
     var lexer = new Lexer(s);
 
 
-    Console.WriteLine("######### LEXER #########");
+    Console.WriteLine("======= LEXER =======");
     while (true)
     {
         var token = lexer.NextSyntaxToken();
@@ -19,8 +19,12 @@ while (true)
         }
     }
 
-    Console.WriteLine("######## PARSER #########");
+    Console.WriteLine("======= PARSER =======");
     var parser = new Parser(lexer);
     var e = parser.Parse();
     e.Print();
+    Console.WriteLine("======= EVALUE =======");
+    var evaluator = new Evaluator(e.Root);
+    Console.WriteLine(evaluator.Evaluate());
+
 }
