@@ -24,6 +24,19 @@ public class Evaluator
         if (rxp is ParenthesisedExpression p)
             return EvaluateExpression(p.Expression);
 
+        if (rxp is UnaryExpression u)
+        {
+            var operand = EvaluateExpression(u.Operand);
+
+            return u.Operator.Type switch
+            {
+                TokenType.MinusToken => -operand,
+                TokenType.PlusToken => operand,
+                _ => throw new Exception($"Unknown unary operator: {u.Type}"),
+            };
+        }
+
+
         if (rxp is BinaryExpression b)
         {
             var left = EvaluateExpression(b.Left);

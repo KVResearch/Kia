@@ -15,5 +15,6 @@ public enum TokenType
     
     LiteralExpression,
     BinaryExpression,
-    ParenthesisedExpression
+    ParenthesisedExpression,
+    UnaryExpression
 }

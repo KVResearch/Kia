@@ -57,7 +57,19 @@ public class Parser
 
     private ExpressionSyntax ParseExpression(int parentPrecedence = 0)
     {
-        var left = ParsePrimaryExpression();
+        ExpressionSyntax left;
+
+        var unaryPrecedence = Current.Type.GetUnaryExpressionPrecedence();
+        if (unaryPrecedence != 0 && unaryPrecedence >= parentPrecedence)
+        {
+            var oper = NextToken();
+            var operand = ParseExpression(unaryPrecedence);
+            left = new UnaryExpression(oper, operand);
+        }
+        else
+        {
+            left = ParsePrimaryExpression();
+        }
 
         while (true)
         {
