@@ -1,10 +1,10 @@
 ﻿namespace Kia.CodeAnalysis.Syntax;
 
-internal class NumberExpression : ExpressionSyntax
+internal class LiteralExpression : ExpressionSyntax
 {
-    public override TokenType Type => TokenType.NumberExpression;
+    public override TokenType Type => TokenType.LiteralExpression;
 
-    public NumberExpression(SyntaxToken token)
+    public LiteralExpression(SyntaxToken token)
     {
         Token = token;
     }

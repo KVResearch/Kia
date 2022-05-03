@@ -84,6 +84,6 @@ public class Parser
         }
 
         var numberToken = ExpectToken(TokenType.NumberToken);
-        return new NumberExpression(numberToken);
+        return new LiteralExpression(numberToken);
     }
 }

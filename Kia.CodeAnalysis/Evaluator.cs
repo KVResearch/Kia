@@ -17,7 +17,7 @@ public class Evaluator
 
     public static int EvaluateExpression(ExpressionSyntax rxp)
     {
-        if (rxp is NumberExpression n)
+        if (rxp is LiteralExpression n)
             return int.Parse(n.Token.Text);
 
 
