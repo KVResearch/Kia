@@ -3,7 +3,7 @@
 while (true)
 {
     Console.Write("> ");
-    var s = Console.ReadLine();
+    var s = Console.ReadLine()!;
 
     var lexer = new Lexer(s);
 
@@ -24,7 +24,14 @@ while (true)
     var e = parser.Parse();
     e.Print();
     Console.WriteLine("======= EVALUE =======");
-    var evaluator = new Evaluator(e.Root);
-    Console.WriteLine(evaluator.Evaluate());
+    try
+    {
+        var evaluator = new Evaluator(e.Root);
+        Console.WriteLine(evaluator.Evaluate());
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine(ex.Message);
+    }
 
 }
