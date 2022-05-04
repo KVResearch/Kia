@@ -42,8 +42,10 @@ public class SyntaxTree
 
         if (node is SyntaxToken t)
         {
-            Console.Write(" ");
-            Console.Write(t.Text);
+            var value = t.Value == null 
+                      ? @"-> NULL"
+                      : $"-> {t.Value}";
+            Console.Write($" {t.Text} {value}");
         }
 
         Console.WriteLine();

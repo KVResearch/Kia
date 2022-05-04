@@ -34,11 +34,23 @@ public class Lexer
             var begin = _position;
             while (char.IsDigit(CurrentChar))
                 Next();
-            return new SyntaxToken(
-                TokenType.NumberToken,
-                begin,
-                _text.Substring(begin, _position - begin)
-            );
+            var tokenText = _text.Substring(begin, _position - begin);
+
+            if (int.TryParse(tokenText, out var value))
+            {
+                return new SyntaxToken(
+                               TokenType.NumberToken,
+                               begin,
+                               tokenText,
+                               value
+                           );
+            }
+            else
+            {
+                // TODO: CANNOT PARSE TO INT
+            }
+
+
         }
 
         if (char.IsWhiteSpace(CurrentChar))

@@ -7,6 +7,7 @@ public class SyntaxToken : SyntaxNode
         Type = type;
         Position = position;
         Text = text;
+        Value = value;
     }
 
     public override TokenType Type { get; }
