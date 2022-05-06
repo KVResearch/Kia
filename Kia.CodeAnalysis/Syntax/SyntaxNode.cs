@@ -2,6 +2,6 @@
 
 public abstract class SyntaxNode
 {
-    public abstract TokenType Type { get; }
+    public abstract TokenType TokenType { get; }
     public abstract IEnumerable<SyntaxNode> GetChildren();
 }

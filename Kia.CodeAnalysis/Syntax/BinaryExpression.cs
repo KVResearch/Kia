@@ -2,7 +2,7 @@
 
 internal class BinaryExpression : ExpressionSyntax
 {
-    public override TokenType Type => TokenType.BinaryExpression;
+    public override TokenType TokenType => TokenType.BinaryExpression;
     public ExpressionSyntax Left { get; }
     public SyntaxToken Operator { get; }
     public ExpressionSyntax Right { get; }

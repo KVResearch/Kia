@@ -2,7 +2,7 @@
 
 internal class LiteralExpression : ExpressionSyntax
 {
-    public override TokenType Type => TokenType.LiteralExpression;
+    public override TokenType TokenType => TokenType.LiteralExpression;
 
     public LiteralExpression(SyntaxToken token)
     {

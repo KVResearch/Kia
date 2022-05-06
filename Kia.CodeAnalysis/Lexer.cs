@@ -4,8 +4,12 @@ namespace Kia.CodeAnalysis;
 
 public class Lexer
 {
+    private List<string> _diagnostics = new List<string>();
     private readonly string _text;
     private int _position;
+
+    public IEnumerable<string> Diagnostics => _diagnostics;
+
     public Lexer(string text)
     {
         _text = text;
@@ -15,6 +19,11 @@ public class Lexer
     public void ResetPosition()
     {
         _position = 0;
+    }
+
+    public void ClearDiagnostics()
+    {
+        _diagnostics.Clear();
     }
 
     public char CurrentChar
@@ -47,10 +56,8 @@ public class Lexer
             }
             else
             {
-                // TODO: CANNOT PARSE TO INT
+                _diagnostics.Add($"[LEXER] int32 casting failed: {tokenText}");
             }
-
-
         }
 
         if (char.IsWhiteSpace(CurrentChar))
@@ -65,7 +72,7 @@ public class Lexer
             );
         }
 
-        return CurrentChar switch
+        var token = CurrentChar switch
         {
             '+' => new SyntaxToken(TokenType.PlusToken, _position++, "+"),
             '-' => new SyntaxToken(TokenType.MinusToken, _position++, "-"),
@@ -75,5 +82,11 @@ public class Lexer
             ')' => new SyntaxToken(TokenType.CloseParenthesisToken, _position++, ")"),
             _ => new SyntaxToken(TokenType.BadToken, text: CurrentChar.ToString(), position: _position++),
         };
+
+        if (token.TokenType == TokenType.BadToken)
+        {
+            _diagnostics.Add($"[LEXER] Bad token: {token.Text}");
+        }
+        return token;
     }
 }

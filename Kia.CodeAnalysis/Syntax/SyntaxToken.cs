@@ -4,13 +4,13 @@ public class SyntaxToken : SyntaxNode
 {
     public SyntaxToken(TokenType type, int position, string text, object? value = null)
     {
-        Type = type;
+        TokenType = type;
         Position = position;
         Text = text;
         Value = value;
     }
 
-    public override TokenType Type { get; }
+    public override TokenType TokenType { get; }
 
     public int Position { get; }
     public string Text { get; }

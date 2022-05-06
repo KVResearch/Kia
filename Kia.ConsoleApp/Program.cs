@@ -12,8 +12,8 @@ while (true)
     while (true)
     {
         var token = lexer.NextSyntaxToken();
-        Console.WriteLine($"{token.Type}: {token.Text}");
-        if (token.Type == TokenType.EndOfFileToken)
+        Console.WriteLine($"{token.TokenType}: {token.Text}");
+        if (token.TokenType == TokenType.EndOfFileToken)
         {
             break;
         }
@@ -33,5 +33,8 @@ while (true)
     {
         Console.WriteLine(ex.Message);
     }
+
+    Console.WriteLine("======= DIAGN =======");
+    e.PrintDiaognostics();
 
 }

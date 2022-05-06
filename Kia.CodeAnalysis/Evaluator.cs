@@ -28,11 +28,11 @@ public class Evaluator
         {
             var operand = EvaluateExpression(u.Operand);
 
-            return u.Operator.Type switch
+            return u.Operator.TokenType switch
             {
                 TokenType.MinusToken => -operand,
                 TokenType.PlusToken => operand,
-                _ => throw new Exception($"Unknown unary operator: {u.Type}"),
+                _ => throw new Exception($"Unknown unary operator: {u.TokenType}"),
             };
         }
 
@@ -42,17 +42,17 @@ public class Evaluator
             var left = EvaluateExpression(b.Left);
             var right = EvaluateExpression(b.Right);
 
-            return b.Operator.Type switch
+            return b.Operator.TokenType switch
             {
                 TokenType.PlusToken => left + right,
                 TokenType.MinusToken => left - right,
                 TokenType.StarToken => left * right,
                 TokenType.SlashToken => left / right,
-                _ => throw new Exception($"Unknown operator: {b.Operator.Type}")
+                _ => throw new Exception($"Unknown operator: {b.Operator.TokenType}")
             };
         }
 
 
-        throw new Exception($"Unexpected type: {rxp.Type}");
+        throw new Exception($"Unexpected type: {rxp.TokenType}");
     }
 }

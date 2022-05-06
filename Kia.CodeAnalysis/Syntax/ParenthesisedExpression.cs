@@ -2,7 +2,7 @@
 
 internal class ParenthesisedExpression : ExpressionSyntax
 {
-    public override TokenType Type => TokenType.ParenthesisedExpression;
+    public override TokenType TokenType => TokenType.ParenthesisedExpression;
 
     public ParenthesisedExpression(SyntaxToken openParenthesis, ExpressionSyntax expression, SyntaxToken closeParenthesis)
     {

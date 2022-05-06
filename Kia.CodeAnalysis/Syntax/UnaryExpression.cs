@@ -2,7 +2,7 @@
 
 public class UnaryExpression : ExpressionSyntax
 {
-    public override TokenType Type => TokenType.UnaryExpression;
+    public override TokenType TokenType => TokenType.UnaryExpression;
 
     public SyntaxToken Operator { get; }
     public ExpressionSyntax Operand { get; }
